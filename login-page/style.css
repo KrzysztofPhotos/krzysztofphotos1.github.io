@@ -29,7 +29,6 @@ body {
 }
 
 .input-form input {
-    cursor: pointer;
     padding: 10px;
     width: 100%;
     color: #fff;
