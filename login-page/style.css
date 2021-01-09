@@ -56,6 +56,7 @@ body {
 
 .input-form input[type="submit"]:hover {
     background: #4442db;
+    cursor: pointer;
 }
 
 .form a {
