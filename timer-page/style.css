@@ -1,0 +1,88 @@
+* {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+	background-color: rgb(22, 22, 22);
+}
+
+.window {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 50%;
+	height: 50%;
+	background-color: rgb(58, 58, 58);
+	border-radius: 5%;
+	color: rgb(58, 58, 58);
+	text-align: center;
+	transition: text-shadow 0.5s, box-shadow 0.5s, background-color 0.4s, width 0.3s, height 0.3s, border-radius 0.3s ;
+}
+
+.window:hover {
+	background-color: blueviolet;
+	width: 65%;
+	height: 65%;
+	border-radius: 10%;
+	box-shadow: 1px 1px 1500px rgba(178, 9, 245, 0.534);
+	text-shadow: 1px 1px 20px rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
+}
+
+#title {
+	width: 100%;
+	margin: 2%;
+	font-size: 400%;
+	transition: font-size 0.3s;
+}
+
+#title:hover {
+	font-size: 600%;
+}
+
+#number-input {
+	width: 40%;
+	font-size: 70px;
+	margin: 0px 10% 0px 10%;
+	background-color: rgba(0, 0, 0, 0.301);
+	border: 0px solid rgba(0, 0, 0, 0.253);
+	border-radius: 3%;
+	transition: width 0.3s, font-size 0.3s;
+} 
+
+#number-input:hover {
+	width: 47%;
+	font-size: 90px;
+
+}
+
+#start-button {
+	color:rgb(255, 255, 255);
+	text-shadow: 0px 0px 0px red;
+	border: 0cm;
+	height: 150px;
+	width: 150px;
+	margin-top: 3%;
+	font-size: 500%;
+	background-color: rgb(96, 0, 160);
+	border-radius: 50%;
+	transition: text-shadow 0.3s, background-color 0.3s, height 0.3s, width 0.3s;
+}
+
+#start-button:hover {
+	text-shadow: 0px 0px 20px rgb(255, 255, 255);
+	background-color: rgba(32, 7, 255, 0.527);
+	height: 200px;
+	width: 200px;
+	box-shadow: 0px 0px 150px rgba(0, 0, 0, 0.521);
+}
+#counter {
+	font-size: 1000%;
+	transition: font-size 0.3s;
+}
+
+#counter:hover {
+	font-size:1400%;
+}
+
