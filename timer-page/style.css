@@ -41,7 +41,7 @@ body{
 	font-size: 600%;
 }
 
-#number-input {
+#liczba-input {
 	width: 40%;
 	font-size: 70px;
 	margin: 0px 10% 0px 10%;
@@ -51,7 +51,7 @@ body{
 	transition: width 0.3s, font-size 0.3s;
 } 
 
-#number-input:hover {
+#liczba-input:hover {
 	width: 47%;
 	font-size: 90px;
 
