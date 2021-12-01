@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator - Twierdzenie Pitagorasa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="header">
+        <h1 id="title">Twierdzenie Pitagorasa</h1>
+        <div id="overlay-title"></div>
+    </div>
+
+    <div id="inputdata">
+    <label for="change_side">Wybierz, co chcesz chcesz obliczyć:</label>
+    
+    <select id="change_side">
+        <option id="aaa" value="a">A</option>
+        <option id="bbb" value="b">B</option>
+        <option id="ccc" value="c">C</option>
+      </select>
+
+      <a id="send" href="#" onclick="disable_one()">
+          <img src="checkico.png" width="5%" id="checkicox"></img>
+      </a>
+
+      <div>
+        <label for="a">A:</label>
+        <input type="number" placeholder="Wpisz wartość a" id="a" min="0" size="10"></br>
+        <label for="b">B:</label>
+        <input type="number" placeholder="Wpisz wartość b" id="b" min="0" size="10"></br>
+        <label for="c">C:</label>
+        <input type="number" placeholder="Wpisz wartość c" id="c" min="0" size="10">
+
+    </br>
+
+        <a href="#" id="myButton" onClick="calculate()">Oblicz</a>
+    </div>
+    </div>
+
+    <div id="printf"></div>
+
+    <script src="script.js"></script>
+    <link href="style.css" rel="stylesheet">
+</body>
+</html>
