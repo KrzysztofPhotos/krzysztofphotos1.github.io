@@ -12,33 +12,27 @@ void setup() {
   
 }
 
-
 void loop() {
   val_potencjometer_1 = analogRead(A1);
   val_potencjometer_2 = analogRead(A2);
 
-  if(variable_pot_1 == val_potencjometer_1){
-    //Serial.println("Brak zmian");
-    if(variable_pot_2 == val_potencjometer_2){
-     //Serial.println("Brak zmian");
-    }
-    else {
-      Serial.println("Zmiany na potencjometrze nr 2");  
-      variable_pot_2 = analogRead(A2);
-    }
-
-    
+  if(val_potencjometer_1 > variable_pot_1 + 20 || val_potencjometer_1 < variable_pot_1 - 20){
+    variable_pot_1 = analogRead(A1);
+    Serial.println("A1");
+    //tutaj akcja wcisniecia przycisku po obrocie potencjometru 1
   }
   else {
-    Serial.println("Zmiany na potencjometrze nr 1");    
-    variable_pot_1 = analogRead(A1);
+    Serial.println("Brak zmian na potencjometrze 1");
   }
 
-
+  if(val_potencjometer_2 > variable_pot_2 + 20 || val_potencjometer_2 < variable_pot_2 - 20){
+    variable_pot_2 = analogRead(A2);
+    Serial.println("A2");
+    //tutaj akcja wcisniecia przycisku po obrocie potencjometru 2
+  }
+  else {
+    Serial.println("Brak zmian na potencjometrze 2");
+  }
   
-  //Serial.println("Potencjometr 1");
-  //Serial.println(val_potencjometer_1);
-  //Serial.println("Potencjometr 2");
-  //Serial.println(val_potencjometer_2);
-  delay(100);
+  
 }
