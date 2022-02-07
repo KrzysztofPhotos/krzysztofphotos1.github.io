@@ -16,48 +16,17 @@ void loop(){
   
   
 
-//  if(btn_cons_1 == 1 && var_temp == 0){
-//  Serial.println("Wartosc 1");
-//    var_temp = 1
-//  }
+  if(btn_cons_1 == 1 && var_temp == 0){
+  Serial.println("Wartosc 1");
+    var_temp = 1;
+  }
   
-  if(btn_cons_1 == 1){
-    //przycisk jest wciesniety (1)
-    
-    if(btn_cons_1 != var_temp){
-      //jesli wartosc wcisnietego przysiku jest rozna od tego poczatkowego to wykonaj:
-      
-      
-     //przycisk zostal przelaczony
-      Serial.println("Wartosc 1");
-      
-      //nadpisuje wartosc "poczatkowa"
-      var_temp = 1; 
-        }
-    }
     
   
-//  if(btn_cons_1 == 0 && var_temp == 1){
-//  Serial.println("Wartosc 0");
-//    var_temp = 0
-//  }
+  if(btn_cons_1 == 0 && var_temp == 1){
+  Serial.println("Wartosc 0");
+    var_temp = 0;
+  }
   
-  
-  
-  
- if(btn_cons_1 == 0){
-    //przycisk jest wciesniety (1)
-    
-    if(btn_cons_1 != var_temp){
-      //jesli wartosc wcisnietego przysiku jest rozna od tego poczatkowego to wykonaj:
-      
-      
-     //przycisk zostal przelaczony
-      Serial.println("Wartosc 0");
-      
-      //nadpisuje wartosc "poczatkowa"
-      var_temp = 0; 
-        }
-    }
   
 }
