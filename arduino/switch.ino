@@ -12,27 +12,40 @@ void setup(){
 void loop(){
   btn_cons_1 = digitalRead(2);
 
-  if(btn_cons_1 == 1){
+  if(btn_cons_1 == 1 && var_temp == 0){
   Serial.println("Wartosc 1");
-    
-    if(var_temp == 0){
-      //przycisk zostal przelaczony
-      
-      int var_temp = 1;
-    }
-    
-    
+    int var_temp = 1
   }
-  else {
-    Serial.println("Wartosc 0");
+  
+  
+  
+//  if(btn_cons_1 == 1){
+//  Serial.println("Wartosc 1");
+//    
+//    if(var_temp == 0){
+//     //przycisk zostal przelaczony
+//      
+//      int var_temp = 1; 
+//        }
+//    }
     
-    if(var_temp == 1){
-      //przycisk zostal przelaczony
-      
-      int var_temp = 0;
-    }
-    
+  
+  if(btn_cons_1 == 0 && var_temp == 1){
+  Serial.println("Wartosc 0");
+    int var_temp = 0
   }
+  
+  
+//  else {
+//    Serial.println("Wartosc 0");
+//    
+//    if(var_temp == 1){
+//      //przycisk zostal przelaczony
+//      
+//     int var_temp = 0;
+//    }
+//    
+//  }
   
 }
 
