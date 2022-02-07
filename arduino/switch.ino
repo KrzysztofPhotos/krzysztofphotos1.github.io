@@ -34,7 +34,7 @@ void loop(){
       Serial.println("Wartosc 1");
       
       //nadpisuje wartosc "poczatkowa"
-      int var_temp = 1; 
+      var_temp = 1; 
         }
     }
     
@@ -58,7 +58,7 @@ void loop(){
       Serial.println("Wartosc 0");
       
       //nadpisuje wartosc "poczatkowa"
-      int var_temp = 0; 
+      var_temp = 0; 
         }
     }
   
