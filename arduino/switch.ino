@@ -19,7 +19,7 @@ void loop(){
   if(btn_cons_1 == 1 && var_temp == 0){
   Serial.println("Wartosc 1");
     var_temp = 1;
-    delay(1);
+    delay(10);
   }
   
     
@@ -27,6 +27,6 @@ void loop(){
   if(btn_cons_1 == 0 && var_temp == 1){
   Serial.println("Wartosc 0");
     var_temp = 0;
-    delay(1);
+    delay(10);
   }
 }
