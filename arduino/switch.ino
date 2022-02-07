@@ -8,6 +8,11 @@ void setup(){
   
 }
 
+Serial.println("var_temp");
+Serial.println("var_temp");
+Serial.println("var_temp");
+delay(5000);
+
 
 void loop(){
   btn_cons_1 = digitalRead(2);
@@ -47,4 +52,28 @@ void loop(){
   }
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+void loop(){
+  btn_cons_1 = digitalRead(2);
+
+        if(btn_cons_1 == 1 && btn_cons_1 != var_temp){
+            Serial.println("Wartosc 1");
+        }
+        if(btn_cons_1 == 0 && btn_cons_1 != var_temp){
+            Serial.println("Wartosc 0");
+        }
+
+
 
