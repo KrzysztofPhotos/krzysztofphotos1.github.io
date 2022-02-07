@@ -45,22 +45,22 @@ void loop(){
 //  }
   
   
-  else {
-    //else czyli jesli wartosc czytana jest rozna od 1 (czyli to 0) wykonaj:
+  
+  
+ if(btn_cons_1 == 0){
+    //przycisk jest wciesniety (1)
     
     if(btn_cons_1 != var_temp){
-      //wartosc czytanej wartosci jest inna od wartosci poczatkowej
+      //jesli wartosc wcisnietego przysiku jest rozna od tego poczatkowego to wykonaj:
       
       
-      //przycisk zostal przelaczony
+     //przycisk zostal przelaczony
       Serial.println("Wartosc 0");
       
-      
-      //nadpisz wartosc "poczatkowa"
-     int var_temp = 0;
+      //nadpisuje wartosc "poczatkowa"
+      int var_temp = 0; 
+        }
     }
-   
-  }
   
 }
 
