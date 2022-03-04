@@ -1,38 +1,58 @@
+
 #include <PicoGamepad.h>
 
 PicoGamepad gamepad;
 
-// 16 bit integer for holding input values
-int val;
+int btn_cons_1;
+int btn_temp_1;
 
-void setup() {  
+void setup() {
+  pinMode(0, INPUT_PULLUP);
   Serial.begin(115200);
-  
-  pinMode(LED_BUILTIN, OUTPUT);
 
-  // Button on pin 
-  pinMode(16, INPUT_PULLUP);
-  pinMode(17, INPUT_PULLUP);
+  //tutaj wartosc poczatkowa zostaje zadefiniowana
+  btn_temp_1 = digitalRead(0);
 
 }
 
 void loop() {
+  //ciagle sprawdza wartosc odczytu z przycisku (0 lub 1)
+  btn_cons_1 = digitalRead(0);
+
+  if (btn_cons_1 == 1 && btn_temp_1 == 0) {
+    Serial.println("[CIRCLE 1] Button switched -> O (1)");
+    btn_temp_1 = 1;
+    delay(10);
+    click_btn_0(); //przycisniecie przycisku
+  }
+
+  if (btn_cons_1 == 0 && btn_temp_1 == 1) {
+    Serial.println("[CIRCLE 1] Button switched -> I (2)");
+    btn_temp_1 = 0;
+    delay(10);
+    click_btn_1(); //przycisniecie przycisku
+  }
 
 
-  // Set button 0 of 128 by reading button on digital pin 28
-  gamepad.SetButton(0, !digitalRead(16));
-  
-  gamepad.SetButton(1, !digitalRead(17));
-
-  // Set hat direction, 4 hats available. direction is clockwise 0=N 1=NE 2=E 3=SE 4=S 5=SW 6=W 7=NW 8=CENTER 
-  // gamepad.SetHat(0, 8);
-
-
-  // Send all inputs via HID 
-  // Nothing is send to your computer until this is called.
   gamepad.send_update();
+  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+  delay(300);
 
-  // Flash the LED just for fun
-  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN)); 
-  delay(100);
 }
+
+
+void click_btn_0() {
+  gamepad.SetButton(0, 1);
+  gamepad.send_update();
+  delay(450);
+  gamepad.SetButton(0, 0);
+}
+
+void click_btn_1() {
+  gamepad.SetButton(1, 1);
+  gamepad.send_update();
+  delay(450);
+  gamepad.SetButton(1, 0);
+}
+
+
