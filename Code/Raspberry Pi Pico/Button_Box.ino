@@ -5,12 +5,13 @@ PicoGamepad gamepad;
 
 int btn_cons_1;
 int btn_temp_1;
-
+int val;
 int analog_buttons;
 
 void setup() {
   pinMode(0, INPUT_PULLUP);
   pinMode(A2, INPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(115200);
 
   //tutaj wartosc poczatkowa zostaje zadefiniowana
@@ -37,7 +38,40 @@ void loop() {
   }
 
   analog_buttons = analogRead(A2);
-  Serial.println(analog_buttons);
+
+  if (analog_buttons > 184 && analog_buttons < 202) {
+    val = 1;
+  }
+  if (analog_buttons > 89 && analog_buttons < 106) {
+    val = 2;
+  }
+  if (analog_buttons > 39 && analog_buttons < 61) {
+    val = 3;
+  }
+  if (analog_buttons > 259 && analog_buttons < 274) {
+    val = 4;
+  }
+  if (analog_buttons > 219 && analog_buttons < 241) {
+    val = 5;
+  }
+  if (analog_buttons > 369 && analog_buttons < 396) {
+    val = 6;
+  }
+  if (analog_buttons > 269 && analog_buttons < 287) {
+    val = 7;
+  }
+  if (analog_buttons > 289 && analog_buttons < 307) {
+    val = 8;
+  }
+  if (analog_buttons > 319 && analog_buttons < 341) {
+    val = 9;
+  }
+  if (analog_buttons > 0) {
+    val = 0;
+  }
+  
+  Serial.println(val);
+
 
   gamepad.send_update();
   digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
@@ -59,5 +93,3 @@ void click_btn_1() {
   delay(450);
   gamepad.SetButton(1, 0);
 }
-
-
