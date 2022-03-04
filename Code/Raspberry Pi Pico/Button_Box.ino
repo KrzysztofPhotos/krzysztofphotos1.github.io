@@ -6,8 +6,11 @@ PicoGamepad gamepad;
 int btn_cons_1;
 int btn_temp_1;
 
+int analog_buttons;
+
 void setup() {
   pinMode(0, INPUT_PULLUP);
+  pinMode(A2, INPUT);
   Serial.begin(115200);
 
   //tutaj wartosc poczatkowa zostaje zadefiniowana
@@ -33,6 +36,8 @@ void loop() {
     click_btn_1(); //przycisniecie przycisku
   }
 
+  analog_buttons = analogRead(A2);
+  Serial.println(analog_buttons);
 
   gamepad.send_update();
   digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
