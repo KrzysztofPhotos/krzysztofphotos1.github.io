@@ -1,46 +1,36 @@
 
-#include <PicoGamepad.h>
 
-PicoGamepad gamepad;
+int val;
+int encoder0PinA = 2;
+int encoder0PinB = 3;
+int encoder0Pos = 0; 
+int encoder0PinALast = LOW;
+int n = LOW;
+int btn;
 
-int btn_cons_1;
-int btn_temp_1;
-
-void setup(){
-  pinMode(0, INPUT_PULLUP);
-  Serial.begin(9600);
-  
-  //tutaj wartosc poczatkowa zostaje zadefiniowana
-  btn_temp_1 = digitalRead(0);
-  
+void setup() {
+  pinMode (encoder0PinA, INPUT);
+  pinMode (encoder0PinB, INPUT);
+  pinMode (1, INPUT);
+  Serial.begin (115200);
 }
 
-void loop(){
-  //ciagle sprawdza wartosc odczytu z przycisku (0 lub 1)
-  btn_cons_1 = digitalRead(0);
-
-  if(btn_cons_1 == 1 && btn_temp_1 == 0){
-  Serial.println("Wartosc 1");
-    btn_temp_1 = 1;
-    delay(10);
-  }
+void loop() {
+  btn = digitalRead(1);
+  Serial.println(btn);
+//napierdalają sie jedynki, jeśli bedzie wcisiety - wartosc to 0
   
-  if(btn_cons_1 == 0 && btn_temp_1 == 1){
-  Serial.println("Wartosc 0");
-    btn_temp_1 = 0;
-    delay(10);
+  n = digitalRead(encoder0PinA);
+  if ((encoder0PinALast == LOW) && (n == HIGH)) {
+    if (digitalRead(encoder0PinB) == LOW) {
+      //encoder0Pos--;
+      Serial.println("LEFT");
+    } else {
+      Serial.println("RIGHT");
+      //encoder0Pos++;
+    }
+    //Serial.println (encoder0Pos);
+    
   }
-
-
-  gamepad.send_update();
-  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-  delay(300);
-  
+  encoder0PinALast = n;
 }
-
-
-
-
-//void btn1(){
-//gamepad.SetButton(0, 1);
-//}
