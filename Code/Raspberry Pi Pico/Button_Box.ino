@@ -1,4 +1,3 @@
-
 #include <PicoGamepad.h>
 
 PicoGamepad gamepad;
@@ -11,9 +10,37 @@ int a2;
 int which_button = 0;
 
 void setup() {
-  pinMode(0, INPUT_PULLUP);
+
   pinMode(A2, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+
+
+  pinMode(0, INPUT_PULLUP);
+  pinMode(1, INPUT_PULLUP);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(3, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(5, INPUT_PULLUP);
+  pinMode(6, INPUT_PULLUP);
+  pinMode(7, INPUT_PULLUP);
+  pinMode(8, INPUT_PULLUP);
+  pinMode(9, INPUT_PULLUP);
+  pinMode(10, INPUT_PULLUP);
+  pinMode(11, INPUT_PULLUP);
+  pinMode(12, INPUT_PULLUP);
+  pinMode(13, INPUT_PULLUP);
+  pinMode(14, INPUT_PULLUP);
+  pinMode(15, INPUT_PULLUP);
+  pinMode(16, INPUT_PULLUP);
+  pinMode(17, INPUT_PULLUP);
+  pinMode(18, INPUT_PULLUP);
+  pinMode(19, INPUT_PULLUP);
+
+
+
+
+
+
   Serial.begin(115200);
 
   //tutaj wartosc poczatkowa zostaje zadefiniowana
@@ -24,6 +51,36 @@ void setup() {
 void loop() {
   //ciagle sprawdza wartosc odczytu z przycisku (0 lub 1)
   btn_cons_1 = digitalRead(0);
+
+  //
+  //   trzy przyciski maja sie zmieniac tylko raz
+  //
+
+  gamepad.SetButton(3, !digitalRead(3));
+  gamepad.SetButton(4, !digitalRead(4));
+  gamepad.SetButton(5, !digitalRead(5));
+  gamepad.SetButton(6, !digitalRead(6));
+  gamepad.SetButton(7, !digitalRead(7));
+  gamepad.SetButton(8, !digitalRead(8));
+  gamepad.SetButton(9, !digitalRead(9));
+  gamepad.SetButton(10, !digitalRead(10));
+  gamepad.SetButton(11, !digitalRead(11));
+  gamepad.SetButton(12, !digitalRead(12));
+  gamepad.SetButton(13, !digitalRead(13));
+  gamepad.SetButton(14, !digitalRead(14));
+  gamepad.SetButton(15, !digitalRead(15));
+  gamepad.SetButton(16, !digitalRead(16));
+  gamepad.SetButton(17, !digitalRead(17));
+  gamepad.SetButton(18, !digitalRead(18));
+  gamepad.SetButton(19, !digitalRead(19));
+
+
+
+
+
+  //gamepad.SetButton(3, !digitalRead(28));
+
+
 
   if (btn_cons_1 == 1 && btn_temp_1 == 0) {
     Serial.println("[CIRCLE 1] Button switched -> O (1)");
