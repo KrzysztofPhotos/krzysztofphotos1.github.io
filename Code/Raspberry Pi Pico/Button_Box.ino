@@ -2,6 +2,16 @@
 
 PicoGamepad gamepad;
 
+///////////// rotary encoder //////////
+#define outputA 20
+#define outputB 21
+
+ int counter = 0; 
+ int aState;
+ int aLastState; 
+///////////////////////////////////////
+
+
 int btn_cons_1;
 int btn_cons_2;
 int btn_cons_3;
@@ -19,9 +29,14 @@ int btn_cons_key;
 
 void setup() {
 
+
+
+pinMode (outputA,INPUT);
+   pinMode (outputB,INPUT);
+aLastState = digitalRead(outputA);  
+   
   pinMode(A2, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
-
 
   pinMode(0, INPUT_PULLUP);
   pinMode(1, INPUT_PULLUP);
@@ -67,7 +82,7 @@ void loop() {
   btn_cons_red = digitalRead(14);
   btn_cons_key = digitalRead(15);
 
-  Serial.println(digitalRead(15));
+  //Serial.println(digitalRead(14));
 
   gamepad.SetButton(3, !digitalRead(3));
   gamepad.SetButton(4, !digitalRead(4));
@@ -86,6 +101,23 @@ void loop() {
   gamepad.SetButton(17, !digitalRead(17));
   gamepad.SetButton(18, !digitalRead(18));
   gamepad.SetButton(19, !digitalRead(19));
+
+
+aState = digitalRead(outputA); // Reads the "current" state of the outputA
+   // If the previous and the current state of the outputA are different, that means a Pulse has occured
+   if (aState != aLastState){     
+     // If the outputB state is different to the outputA state, that means the encoder is rotating clockwise
+     if (digitalRead(outputB) != aState) { 
+      //tutaj dodać wcisniecie klawisza
+      click_btn_21()
+       counter ++;
+     } else {
+      click_btn_20()
+      //tutaj dodac wciesniecie klawisza
+       counter --;
+     }
+   } 
+   aLastState = aState; // Updates the previous state of the outputA with the current state
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -221,8 +253,8 @@ void loop() {
 
 
   gamepad.send_update();
-  //digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-  delay(50);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(40);
 
 }
 
@@ -260,6 +292,27 @@ void click_btn_15() {
   gamepad.send_update();
   delay(250);
   gamepad.SetButton(15, 0);
+}
+
+void click_btn_20() {
+  gamepad.SetButton(20, 1);
+  gamepad.send_update();
+  delay(25);
+  gamepad.SetButton(20, 0);
+}
+
+void click_btn_21() {
+  gamepad.SetButton(21, 1);
+  gamepad.send_update();
+  delay(25);
+  gamepad.SetButton(21, 0);
+}
+
+void click_btn_22() {
+  gamepad.SetButton(22, 1);
+  gamepad.send_update();
+  delay(25);
+  gamepad.SetButton(22, 0);
 }
 
 void click_btn_23() {
