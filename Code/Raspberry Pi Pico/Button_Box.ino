@@ -6,9 +6,9 @@ PicoGamepad gamepad;
 #define outputA 20
 #define outputB 21
 
- int counter = 0; 
- int aState;
- int aLastState; 
+int counter = 0;
+int aState;
+int aLastState;
 ///////////////////////////////////////
 
 
@@ -31,10 +31,10 @@ void setup() {
 
 
 
-pinMode (outputA,INPUT);
-   pinMode (outputB,INPUT);
-aLastState = digitalRead(outputA);  
-   
+  pinMode (outputA, INPUT);
+  pinMode (outputB, INPUT);
+  aLastState = digitalRead(outputA);
+
   pinMode(A2, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -103,22 +103,21 @@ void loop() {
   gamepad.SetButton(19, !digitalRead(19));
 
 
-aState = digitalRead(outputA); // Reads the "current" state of the outputA
-   // If the previous and the current state of the outputA are different, that means a Pulse has occured
-   if (aState != aLastState){     
-     // If the outputB state is different to the outputA state, that means the encoder is rotating clockwise
-     if (digitalRead(outputB) != aState) { 
+  aState = digitalRead(outputA); // Reads the "current" state of the outputA
+  // If the previous and the current state of the outputA are different, that means a Pulse has occured
+  if (aState != aLastState) {
+    // If the outputB state is different to the outputA state, that means the encoder is rotating clockwise
+    if (digitalRead(outputB) != aState) {
       //tutaj dodać wcisniecie klawisza
-      click_btn_21()
-       counter ++;
-     } else {
-      click_btn_20()
+      click_btn_21();
+    } else {
+      click_btn_20();
       //tutaj dodac wciesniecie klawisza
-       counter --;
-     }
-   } 
-   aLastState = aState; // Updates the previous state of the outputA with the current state
+    }
+  }
+  aLastState = aState; // Updates the previous state of the outputA with the current state
 
+  gamepad.SetButton(22, !digitalRead(22)); //rotary encoder button
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -192,8 +191,8 @@ aState = digitalRead(outputA); // Reads the "current" state of the outputA
   }
 
 
-  a2 = analogRead(A2);
-  analog_buttons = a2;
+  //a2 = analogRead(A2);
+  //analog_buttons = a2;           /////////// ODKOMENBTOWAC TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO OO O O OO O OO O O OO O O O OO  O O OO OO
 
   if (analog_buttons > 184 && analog_buttons < 202) {
     val = 1;
@@ -254,7 +253,7 @@ aState = digitalRead(outputA); // Reads the "current" state of the outputA
 
   gamepad.send_update();
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(40);
+  //delay(40);
 
 }
 
@@ -297,14 +296,14 @@ void click_btn_15() {
 void click_btn_20() {
   gamepad.SetButton(20, 1);
   gamepad.send_update();
-  delay(25);
+  delay(10);
   gamepad.SetButton(20, 0);
 }
 
 void click_btn_21() {
   gamepad.SetButton(21, 1);
   gamepad.send_update();
-  delay(25);
+  delay(10);
   gamepad.SetButton(21, 0);
 }
 
