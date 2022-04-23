@@ -3,11 +3,19 @@
 PicoGamepad gamepad;
 
 int btn_cons_1;
+int btn_cons_2;
+int btn_cons_3;
 int btn_temp_1;
+int btn_temp_2;
+int btn_temp_3;
 int val;
 int analog_buttons;
 int a2;
 int which_button = 0;
+int btn_temp_red;
+int btn_temp_key;
+int btn_cons_red;
+int btn_cons_key;
 
 void setup() {
 
@@ -45,16 +53,21 @@ void setup() {
 
   //tutaj wartosc poczatkowa zostaje zadefiniowana
   btn_temp_1 = digitalRead(0);
+  btn_temp_2 = digitalRead(1);
+  btn_temp_3 = digitalRead(2);
+  btn_temp_red = digitalRead(14);
+  btn_temp_key = digitalRead(15);
 
 }
 
 void loop() {
-  //ciagle sprawdza wartosc odczytu z przycisku (0 lub 1)
   btn_cons_1 = digitalRead(0);
+  btn_cons_2 = digitalRead(1);
+  btn_cons_3 = digitalRead(2);
+  btn_cons_red = digitalRead(14);
+  btn_cons_key = digitalRead(15);
 
-  //
-  //   trzy przyciski maja sie zmieniac tylko raz
-  //
+  Serial.println(digitalRead(15));
 
   gamepad.SetButton(3, !digitalRead(3));
   gamepad.SetButton(4, !digitalRead(4));
@@ -67,21 +80,44 @@ void loop() {
   gamepad.SetButton(11, !digitalRead(11));
   gamepad.SetButton(12, !digitalRead(12));
   gamepad.SetButton(13, !digitalRead(13));
-  gamepad.SetButton(14, !digitalRead(14));
-  gamepad.SetButton(15, !digitalRead(15));
+  //gamepad.SetButton(14, !digitalRead(14)); // red
+  //gamepad.SetButton(15, !digitalRead(15)); // key
   gamepad.SetButton(16, !digitalRead(16));
   gamepad.SetButton(17, !digitalRead(17));
   gamepad.SetButton(18, !digitalRead(18));
   gamepad.SetButton(19, !digitalRead(19));
 
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  if (btn_cons_key == 1 && btn_temp_key == 0) {
+    Serial.println("[CIRCLE 1] Button switched -> O (1)");
+    btn_temp_key = 1;
+    delay(10);
+    //click_btn_15(); //przycisniecie przycisku
+  }
 
+  if (btn_cons_key == 0 && btn_temp_key == 1) {
+    Serial.println("[CIRCLE 1] Button switched -> I (2)");
+    btn_temp_key = 0;
+    delay(10);
+    click_btn_15(); //przycisniecie przycisku
+  }
 
-  //gamepad.SetButton(3, !digitalRead(28));
+  if (btn_cons_red == 1 && btn_temp_red == 0) {
+    Serial.println("[CIRCLE 1] Button switched -> O (1)");
+    btn_temp_red = 1;
+    delay(10);
+    //click_btn_14(); //przycisniecie przycisku
+  }
 
-
-
+  if (btn_cons_red == 0 && btn_temp_red == 1) {
+    Serial.println("[CIRCLE 1] Button switched -> I (2)");
+    btn_temp_red = 0;
+    delay(10);
+    click_btn_14(); //przycisniecie przycisku
+  }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if (btn_cons_1 == 1 && btn_temp_1 == 0) {
     Serial.println("[CIRCLE 1] Button switched -> O (1)");
     btn_temp_1 = 1;
@@ -93,8 +129,36 @@ void loop() {
     Serial.println("[CIRCLE 1] Button switched -> I (2)");
     btn_temp_1 = 0;
     delay(10);
+    click_btn_0(); //przycisniecie przycisku
+  }
+
+  if (btn_cons_2 == 1 && btn_temp_2 == 0) {
+    Serial.println("[CIRCLE 2] Button switched -> O (1)");
+    btn_temp_2 = 1;
+    delay(10);
     click_btn_1(); //przycisniecie przycisku
   }
+
+  if (btn_cons_2 == 0 && btn_temp_2 == 1) {
+    Serial.println("[CIRCLE 2] Button switched -> I (2)");
+    btn_temp_2 = 0;
+    delay(10);
+    click_btn_1(); //przycisniecie przycisku
+  }
+  if (btn_cons_3 == 1 && btn_temp_3 == 0) {
+    Serial.println("[CIRCLE 3] Button switched -> O (1)");
+    btn_temp_3 = 1;
+    delay(10);
+    click_btn_2(); //przycisniecie przycisku
+  }
+
+  if (btn_cons_3 == 0 && btn_temp_3 == 1) {
+    Serial.println("[CIRCLE 3] Button switched -> I (2)");
+    btn_temp_3 = 0;
+    delay(10);
+    click_btn_2(); //przycisniecie przycisku
+  }
+
 
   a2 = analogRead(A2);
   analog_buttons = a2;
@@ -152,7 +216,7 @@ void loop() {
 
 
 
-  Serial.println(val);
+  //Serial.println(val);   drukuej wartosci z analoga
   //Serial.println(a2); //temporary code
 
 
@@ -175,6 +239,27 @@ void click_btn_1() {
   gamepad.send_update();
   delay(250);
   gamepad.SetButton(1, 0);
+}
+
+void click_btn_2() {
+  gamepad.SetButton(2, 1);
+  gamepad.send_update();
+  delay(250);
+  gamepad.SetButton(2, 0);
+}
+
+void click_btn_14() {
+  gamepad.SetButton(14, 1);
+  gamepad.send_update();
+  delay(250);
+  gamepad.SetButton(14, 0);
+}
+
+void click_btn_15() {
+  gamepad.SetButton(15, 1);
+  gamepad.send_update();
+  delay(250);
+  gamepad.SetButton(15, 0);
 }
 
 void click_btn_23() {
