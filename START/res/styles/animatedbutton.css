@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.animatedBtn {
+  margin-top: 5%;
+  position: relative;
+  display: inline-block;
+  border: none;
+  outline: none;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #666666;
+  color: white;
+}
+
+.animatedBtn::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(144deg, #00bfff, #0033ed 50%, #723cd0);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.animatedBtn:hover::before {
+  transform: none;
+}
+
+.animatedBtn span {
+  display: inline-block;
+  padding: 1.2rem 2.2rem;
+  transition: transform 0.5s;
+}
+
+.animatedBtn:hover span {
+  transform: translateX(100%);
+}

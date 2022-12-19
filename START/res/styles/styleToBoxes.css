@@ -1,0 +1,19 @@
+.element.box1 {
+    background-image: url("/START/res/box1/image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.element.box2 {
+    background-image: url("/START/res/box2/img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.element.box3 {
+    background-image: url("/START/res/box3/img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-shadow: 5px 5px 1px rgba(0, 0, 0, 1);
+    text-align: center;
+}
